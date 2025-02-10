@@ -12,13 +12,13 @@ class Instructions extends Phaser.Scene {
 
         // display instructions based on control scheme
         if (controlScheme === 'wasd') {
-            this.add.text(100, 150, 'Use WASD to move. Press W to jump.', { fontSize: '24px', fill: '#fff' })
+            this.add.text(100, 200, 'Use WASD to move.\nPress W to jump.', { fontSize: '24px', fill: '#fff' })
         } else if (controlScheme === 'arrows') {
-            this.add.text(100, 150, 'Use Arrow Keys to move. Press UP to jump.', { fontSize: '24px', fill: '#fff' })
+            this.add.text(100, 200, 'Use Arrow Keys to move.\nPress UP to jump.', { fontSize: '24px', fill: '#fff' })
         } else if (controlScheme === 'mouse') {
-            this.add.text(100, 150, 'Use mouse to move. Left click to jump.', { fontSize: '24px', fill: '#fff' })
+            this.add.text(100, 200, 'Use mouse to move.\nLeft click to jump.', { fontSize: '24px', fill: '#fff' })
         } else if (controlScheme === 'spacebar') {
-            this.add.text(100, 150, 'Use Arrow Keys to move. Press SPACE to jump.', { fontSize: '24px', fill: '#fff' })
+            this.add.text(100, 200, 'Use Arrow Keys to move.\nPress SPACE to jump.', { fontSize: '24px', fill: '#fff' })
         }
 
 
