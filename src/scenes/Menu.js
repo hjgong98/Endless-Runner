@@ -27,6 +27,8 @@ class Menu extends Phaser.Scene {
         })
 
         // load backgrounds
+        this.load.image('background1', './assets/city 7.png')
+        this.load.image('background2', './assets/nature 4.png')
 
         // load platforms
         this.load.image('platform', 'assets/platform.png')

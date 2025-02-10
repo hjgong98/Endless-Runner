@@ -10,13 +10,11 @@ class Controls extends Phaser.Scene {
         let wasdOption = this.add.text(100, 200, 'WASD', { fontSize: '24px', fill: '#fff' }).setInteractive()
         let arrowsOption = this.add.text(100, 250, 'Arrows', { fontSize: '24px', fill: '#fff' }).setInteractive()
         let mouseOption = this.add.text(100, 300, 'Mouse', { fontSize: '24px', fill: '#fff' }).setInteractive()
-        let spacebarOption = this.add.text(100, 350, 'Spacebar', { fontSize: '24px', fill: '#fff' }).setInteractive()
 
         // events for controls
         wasdOption.on('pointerdown', () => this.selectControls('wasd'));
         arrowsOption.on('pointerdown', () => this.selectControls('arrows'));
         mouseOption.on('pointerdown', () => this.selectControls('mouse'));
-        spacebarOption.on('pointerdown', () => this.selectControls('spacebar'));
     }
     
     selectControls(controlScheme) {

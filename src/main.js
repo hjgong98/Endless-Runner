@@ -17,18 +17,39 @@ let game = new Phaser.Game(config)
 let borderUISize = game.config.height / 15
 let borderPadding = borderUISize / 3
 
-// Global game options
+// global game options
 let gameOptions = {
-    platformSpeedRange: [300, 400],     // Platform speed range, in pixels per second
-    spawnRange: [80, 300],              // Spawn range for platforms
-    platformSizeRange: [90, 300],       // Platform width range
-    platformHeightRange: [-10, 10],     // Height range between platforms
-    platformHeighScale: 10,             // Scale for platform height range
-    platformVerticalLimit: [0.4, 0.8],  // Platform max and min height, as screen height ratio
-    playerGravity: 900,                 // Player gravity
-    jumpForce: 400,                     // Player jump force
-    playerStartPosition: 200,           // Player starting X position
-    jumps: 2                            // Number of consecutive jumps allowed
+ 
+    // platform speed range, in pixels per second
+    platformSpeedRange: [300, 400],
+ 
+    // spawn range, how far should be the rightmost platform from the right edge
+    // before next platform spawns, in pixels
+    spawnRange: [80, 300],
+ 
+    // platform width range, in pixels
+    platformSizeRange: [90, 300],
+ 
+    // a height range between rightmost platform and next platform to be spawned
+    platformHeightRange: [-10, 10],
+ 
+    // a scale to be multiplied by platformHeightRange
+    platformHeighScale: 10,
+ 
+    // platform max and min height, as screen height ratio
+    platformVerticalLimit: [0.4, 0.8],
+ 
+    // player gravity
+    playerGravity: 900,
+ 
+    // player jump force
+    jumpForce: 400,
+ 
+    // player starting X position
+    playerStartPosition: 200,
+ 
+    // consecutive jumps allowed
+    jumps: 2
 }
 
 // Reserve keyword bindings
