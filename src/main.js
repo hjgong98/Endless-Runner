@@ -19,7 +19,9 @@ let borderPadding = borderUISize / 3
 
 // global game options
 let gameOptions = {
- 
+    // Speed of the background scroll (in pixels per frame)
+    backgroundScrollSpeed: 1,
+
     // platform speed range, in pixels per second
     platformSpeedRange: [300, 400],
  
