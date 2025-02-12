@@ -1,3 +1,6 @@
+// Name: Hannah Gong
+// Game Title: Endless Runner
+// Hours Spent on this game: i want to say 36 but it was probably way more that that 
 let config = {
     type: Phaser.AUTO,
     width: 640,
@@ -6,7 +9,6 @@ let config = {
         default: 'arcade',
         arcade: {
             debug: false,
-            gravity: { y: 500 }
         }
     },
     scene: [ Menu, Play, Instructions, Sprites, Controls, Achievements, Credits]
@@ -48,7 +50,7 @@ let gameOptions = {
     jumpForce: 400,
  
     // player starting X position
-    playerStartPosition: 50,
+    playerStartPosition: 200,
  
     // consecutive jumps allowed
     jumps: 2
