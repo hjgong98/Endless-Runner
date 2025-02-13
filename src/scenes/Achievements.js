@@ -9,6 +9,9 @@ class Achievements extends Phaser.Scene {
         // Get the longest time from the registry
         const longestTime = this.registry.get('longestTime') || 0
 
+        // get points
+        const mostPlatforms = this.registry.get('mostPlatforms') || 0
+
 
         // Convert seconds to minutes and seconds
         const minutes = Math.floor(longestTime / 60)
@@ -16,6 +19,12 @@ class Achievements extends Phaser.Scene {
 
         // Display the longest time survived
         this.add.text(100, 200, `Longest Time Survived: ${minutes}m ${seconds}s`, { 
+            fontSize: '24px', 
+            fill: '#fff' 
+        })
+
+        // display points
+        this.add.text(100, 250, `Most Points: ${mostPlatforms}`, { 
             fontSize: '24px', 
             fill: '#fff' 
         })
