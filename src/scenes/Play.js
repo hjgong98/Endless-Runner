@@ -14,6 +14,13 @@ class Play extends Phaser.Scene {
         const selectedSprite = this.registry.get('selectedSprite') || 'player1' // Default to 'player1' if none selected
         const controlScheme = this.registry.get('controls') || 'wasd' // Default to 'wasd' if none selected
 
+        // Initialize timer
+        this.startTime = this.time.now // Record the start time
+        this.elapsedTime = 0 // Initialize elapsed time
+
+        // Initialize platform landing counter
+        this.platformsLanded = 0
+
         // get background sprite
         const scaleFactor = game.config.height / this.textures.get('background').getSourceImage().height
         this.background = this.add.tileSprite(0, 0, game.config.width * 2, game.config.height, 'background')
@@ -69,11 +76,23 @@ class Play extends Phaser.Scene {
         //this.maxJumps = 2
 
         // Add a button to return to the Menu
-        let menuButton = this.add.text(500, 20, 'Menu', { fontSize: '24px', fill: '#fff' })
+        let menuButton = this.add.text(450, 20, 'Menu', { fontSize: '24px', fill: '#fff' })
             .setInteractive()
             .on('pointerdown', () => {
                 this.scene.start('Menu')
             })
+
+        // timer text
+        this.timerText = this.add.text(450, 60, 'Time: 0', { 
+            fontSize: '24px', 
+            fill: '#fff'
+        }).setScrollFactor(0)
+
+        // Add text to display the number of POINTS landed
+        this.platformsLandedText = this.add.text(450, 100, 'POINTS: 0', { 
+            fontSize: '24px', 
+            fill: '#fff'
+        }).setScrollFactor(0)
 
         // group with all active platforms.
         this.platformGroup = this.add.group({
@@ -103,6 +122,10 @@ class Play extends Phaser.Scene {
             if(!this.player.anims.isPlaying){
                 this.player.anims.play("run")
             }
+
+            // Increment the platform landing counter
+            this.platformsLanded = this.platformsLanded + 0.5
+            this.platformsLandedText.setText(`POINTS: ${Math.floor(this.platformsLanded)}`)
         }, null, this)
     }
 
@@ -128,12 +151,33 @@ class Play extends Phaser.Scene {
 
     update() {
         // game over
-        const bottomThreshold = 10
-        if(this.player.y >= game.config.height - bottomThreshold){
+        const bottomThreshold = 20
+        if(this.player.y >= game.config.height - bottomThreshold) {
+            const timeSurvived = this.elapsedTime // Get the elapsed time
+            const platformsLanded = this.platformsLanded
+
+            const longestTime = this.registry.get('longestTime') || 0
+            const mostPlatforms = this.registry.get('mostPlatforms') || 0
+
+            // If the current time is longer, update the longest time
+            if (timeSurvived > longestTime) {
+                this.registry.set('longestTime', timeSurvived)
+            }
+
+            // If the current number of platforms landed is higher, update the record
+            if (platformsLanded > mostPlatforms) {
+                this.registry.set('mostPlatforms', platformsLanded)
+            }
+
             this.scene.start("Play")
             return
         }
         
+        // Calculate elapsed time in seconds
+        this.elapsedTime = Math.floor((this.time.now - this.startTime) / 1000)
+
+        // Update the timer text
+        this.timerText.setText(`Time: ${this.elapsedTime}`)
 
         // shift tile sprite over
         //this.background.tilePositionX = this.player.x * 0.5

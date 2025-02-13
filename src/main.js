@@ -4,7 +4,7 @@
 let config = {
     type: Phaser.AUTO,
     width: 640,
-    height: 480,
+    heighzZt: 480,
     physics:{
         default: 'arcade',
         arcade: {
@@ -55,6 +55,3 @@ let gameOptions = {
     // consecutive jumps allowed
     jumps: 2
 }
-
-// Reserve keyword bindings
-let keyJump

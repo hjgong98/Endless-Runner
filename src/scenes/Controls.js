@@ -12,16 +12,16 @@ class Controls extends Phaser.Scene {
         let mouseOption = this.add.text(100, 300, 'Mouse', { fontSize: '24px', fill: '#fff' }).setInteractive()
 
         // events for controls
-        wasdOption.on('pointerdown', () => this.selectControls('wasd'));
-        arrowsOption.on('pointerdown', () => this.selectControls('arrows'));
-        mouseOption.on('pointerdown', () => this.selectControls('mouse'));
+        wasdOption.on('pointerdown', () => this.selectControls('wasd'))
+        arrowsOption.on('pointerdown', () => this.selectControls('arrows'))
+        mouseOption.on('pointerdown', () => this.selectControls('mouse'))
     }
     
     selectControls(controlScheme) {
         // Save the selected control scheme to the registry
-        this.registry.set('controls', controlScheme);
+        this.registry.set('controls', controlScheme)
 
         // Return to the Menu scene
-        this.scene.start('Menu');
+        this.scene.start('Menu')
     }
 }
